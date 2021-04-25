@@ -72,15 +72,15 @@ class _MyAppState extends State<MyApp> {
         allowFontScaling: false,
         builder: () => Obx(() {
           var applicationState = applicationStarterController.state.value;
-          return Container();
+          // return Container();
 
-          // if (applicationState == ApplicationState.LoggedIn) {
-          //   return returnWidget1;
-          // } else if (applicationState == ApplicationState.LoggedOut) {
-          //   return returnWidget1;
-          // } else {
-          //   return returnWidget1;
-          // }
+          if (applicationState == ApplicationState.LoggedIn) {
+            return returnWidget1;
+          } else if (applicationState == ApplicationState.LoggedOut) {
+            return returnWidget1;
+          } else {
+            return returnWidget1;
+          }
         }),
       );
   }

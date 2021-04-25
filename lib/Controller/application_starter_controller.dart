@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:urban_club/util/sharePreference_instance.dart';
+
 enum ApplicationState { applicationRunning, LoggedIn, LoggedOut }
 
 class ApplicationStarterController extends GetxController {
@@ -12,7 +13,7 @@ class ApplicationStarterController extends GetxController {
   }
 
   initializeApplicationState() {
-    Future.delayed(const Duration(seconds: 0), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (sharePrefereceInstance.isLogin() != null &&
           sharePrefereceInstance.isLogin()!) {
         state.value = ApplicationState.LoggedIn;
