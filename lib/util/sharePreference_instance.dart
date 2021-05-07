@@ -26,11 +26,14 @@ class SharePreferenceInstance {
     prefs?.clear();
   }
 
- 
   //keys
+  // ignore: non_constant_identifier_names
   final ISLOGIN = 'isLogin';
+  // ignore: non_constant_identifier_names
   final USER_TOKEN = 'user_token';
+  // ignore: non_constant_identifier_names
   final User_ROLE = 'user_role';
+  // ignore: non_constant_identifier_names
   final PROFILE_PHOTO_PATH = 'profile_photo_path';
 
   //isLogin
