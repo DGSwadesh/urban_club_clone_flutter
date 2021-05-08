@@ -8,6 +8,10 @@ class BookingScreen extends StatefulWidget {
 class _BookingScreenState extends State<BookingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Container(
+      height: 1500,
+      width: double.infinity,
+      color: Colors.red,
+    );
   }
 }
