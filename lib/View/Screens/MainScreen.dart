@@ -30,22 +30,24 @@ class _MainScreenState extends State<MainScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.blue,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            //service search ui
-            Align(
-              alignment: Alignment.topRight,
-              child: _searchServices(
-                'Search for services',
-                Colors.white,
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              //service search ui
+              Align(
+                alignment: Alignment.topRight,
+                child: _searchServices(
+                  'Search for services',
+                  Colors.white,
+                ),
               ),
-            ),
-            //location search ui
-            _locationSearch(Colors.orange, 'search Location'),
-            //Home,booking and profile ui
-            _widgetOptions.elementAt(_selectedIndex),
-          ],
+              //location search ui
+              _locationSearch(Colors.orange, 'search Location'),
+              //Home,booking and profile ui
+              _widgetOptions.elementAt(_selectedIndex),
+            ],
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
             onTap: _onItemTapped,

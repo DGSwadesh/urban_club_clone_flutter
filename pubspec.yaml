@@ -28,18 +28,18 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
-  fluttertoast:
+  fluttertoast: ^8.0.6
   provider:
   http:
-  cached_network_image: ^3.0.0
+  cached_network_image:
   google_fonts:
   shared_preferences:
 
-  get: ^4.1.4
-  animations: ^2.0.0
-  font_awesome_flutter: ^9.0.0
-  carousel_slider: ^3.0.0
-  flutter_screenutil: ^5.0.0
+  get: 
+  animations: 
+  font_awesome_flutter: 
+  carousel_slider: 
+  flutter_screenutil: 
 
 dev_dependencies:
   flutter_test:
