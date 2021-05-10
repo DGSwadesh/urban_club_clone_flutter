@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:urban_club/View/Screens/VariousServices/AcService.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -36,13 +37,17 @@ class _HomePageState extends State<HomeScreen> {
               initialPage: 0,
             ),
           ),
-          Container(
-            //height: .5.sh,
-            height: 300,
-            width: double.infinity,
-            color: Colors.blue[50],
-            child: Padding(
-              padding: EdgeInsets.only(top: 10),
+          Padding(
+            padding: EdgeInsets.only(
+              left: 8.0,
+              right: 10,
+              top: 10,
+            ),
+            child: Container(
+              //height: .5.sh,
+              height: 300,
+              width: double.infinity,
+              color: Colors.blue[50],
               child: GridView.count(
                 physics: const NeverScrollableScrollPhysics(),
                 mainAxisSpacing: 1,
@@ -51,7 +56,7 @@ class _HomePageState extends State<HomeScreen> {
                 children: [
                   InkWell(
                     child: menuItems(),
-                    onTap: () => null,
+                    onTap: () => Get.to(AcService()),
                   ),
                   menuItems(),
                   menuItems(),
@@ -69,12 +74,12 @@ class _HomePageState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.only(left: 10.0),
             child: Align(
               alignment: Alignment.topLeft,
               child: Text('Best Offer',
                   style: GoogleFonts.getFont(
-                    'Spartan',
+                    'Roboto',
                     fontSize: 21,
                   )
                   // TextStyle(fontSize: 21, ),
@@ -82,32 +87,69 @@ class _HomePageState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 4.0, left: 8),
+            padding: EdgeInsets.only(top: 2.0, left: 10),
             child: Align(
               alignment: Alignment.topLeft,
               child: Text('Hygin & Single use products | low contact services',
                   style: GoogleFonts.getFont(
-                    'Hepta Slab',
-                    fontSize: 14,
+                    'Roboto',
+                    fontSize: 15,
                   )
                   // TextStyle(fontSize: 21, ),
                   ),
             ),
           ),
-          Row(children: [
-            menuItems(),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            BestOffer(imageNumber: 0, imagebelowText: 'Flower'),
+            BestOffer(imageNumber: 0, imagebelowText: 'Flower')
+          ]),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            BestOffer(imageNumber: 0, imagebelowText: 'Flower'),
+            BestOffer(imageNumber: 0, imagebelowText: 'Flower')
           ]),
         ],
       ),
     );
   }
 
-  Widget menuItems() {
-    return Card(
-      elevation: 10,
-      color: Colors.white,
-      shadowColor: Colors.purpleAccent,
+  Widget BestOffer({int? imageNumber, String? imagebelowText}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          //decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+          child: Column(
+        children: [
+          Container(
+            height: 100,
+            width: 150,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: NetworkImage(
+                      images[imageNumber!],
+                    ))),
+
+            // child: Image.network(
+            //   images[imageNumber],
+            //   fit: BoxFit.cover,
+            // ),
+          ),
+          Text('$imagebelowText')
+        ],
+      )),
     );
+  }
+
+  Widget menuItems([index]) {
+    return Card(
+        elevation: 2,
+        color: Colors.white,
+        shadowColor: Colors.purpleAccent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Icon(Icons.ac_unit), Text('Service')],
+        ));
   }
 
   Widget CarasolItem({imageNumber}) {

@@ -8,9 +8,11 @@ import 'package:get/get.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:urban_club/util/sharePreference_instance.dart';
 import 'Controller/application_starter_controller.dart';
+import 'StreamBuilderLearning2.dart';
 import 'View/Screens/MainScreen.dart';
 import 'View/SigninSignUp/LoginView.dart';
 import 'View/SigninSignUp/errorrpage.dart';
+import 'streamBuilderLearning.dart';
 //import 'View/DashBoard/Dashboard.dart';
 //import 'View/SigninSignUp/welcomeScreen.dart';
 
@@ -47,6 +49,7 @@ class StartApp extends StatelessWidget {
       ],
       unknownRoute: GetPage(name: '/errorpage', page: () => ErrorPage()),
       // home: MyApp(),
+      //home: Loginview(),
       home: Loginview(),
     );
   }

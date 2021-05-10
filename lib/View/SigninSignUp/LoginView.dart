@@ -151,7 +151,7 @@ class _LoginviewState extends State<Loginview> {
                   ),
                   TextButton(
                       onPressed: () {
-                        Get.to(() => MainScreen());
+                        Get.off(() => MainScreen());
                       },
                       child: Text('Skip'))
                 ],

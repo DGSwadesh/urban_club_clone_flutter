@@ -29,27 +29,38 @@ class _MainScreenState extends State<MainScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.blue[50],
+        appBar: AppBar(
+          toolbarHeight: 80,
+          backgroundColor: Colors.pink,
+          elevation: 20,
+          shadowColor: Colors.pink,
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _locationSearch(Colors.white, 'search Location'),
+                _searchServices(
+                  'Search for services',
+                  Colors.white,
+                ),
+              ],
+            ),
+          ],
+        ),
         body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              //service search ui
+          child: Padding(
+            padding: EdgeInsets.only(top: 8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //service search ui
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _locationSearch(Colors.orange, 'search Location'),
-                  _searchServices(
-                    'Search for services',
-                    Colors.white,
-                  ),
-                ],
-              ),
-              //location search ui
+                //location search ui
 
-              //Home,booking and profile ui
-              _widgetOptions.elementAt(_selectedIndex),
-            ],
+                //Home,booking and profile ui
+                _widgetOptions.elementAt(_selectedIndex),
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -121,7 +132,7 @@ class _MainScreenState extends State<MainScreen> {
                           border: InputBorder.none,
                           hintText: hintText,
                           hintStyle: GoogleFonts.getFont(
-                            'Spartan',
+                            'Roboto',
                             fontSize: 15,
                           )),
                     ),
@@ -156,7 +167,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget _locationSearch(Color color, String hintText) {
+  Widget _locationSearch(Color color, String hintText, [IconData? icon]) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: AnimatedContainer(
@@ -178,10 +189,10 @@ class _MainScreenState extends State<MainScreen> {
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                             border: InputBorder.none,
-                            // icon: Icon(
-                            //   Icons.location_history,
-                            //   color: Colors.blue,
-                            // ),
+                            icon: Icon(
+                              icon,
+                              color: Colors.blue,
+                            ),
                             hintStyle: TextStyle(
                               color: Colors.blue[900],
                             )),
@@ -191,7 +202,7 @@ class _MainScreenState extends State<MainScreen> {
                             border: InputBorder.none,
                             hintText: hintText,
                             hintStyle: GoogleFonts.getFont(
-                              'Spartan',
+                              'Roboto',
                               fontSize: 15,
                             )),
                       )),
