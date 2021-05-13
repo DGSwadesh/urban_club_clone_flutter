@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'BottombarScreens/BookingScreen.dart';
 import 'BottombarScreens/HomeScreen.dart';
 import 'BottombarScreens/ProfileScreen.dart';
+import 'BottombarScreens/RewardScreen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -22,8 +23,13 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  var _widgetOptions = <Widget>[HomeScreen(), BookingScreen(), ProfileScreen()];
-
+  var _widgetOptions = <Widget>[
+    HomeScreen(),
+    BookingScreen(),
+    RewardScreen(),
+    ProfileScreen()
+  ];
+  Color appbarcolor = Color(0xff246EE9);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,9 +37,9 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.blue[50],
         appBar: AppBar(
           toolbarHeight: 80,
-          backgroundColor: Colors.pink,
+          backgroundColor: appbarcolor,
           elevation: 20,
-          shadowColor: Colors.pink,
+          shadowColor: Colors.blue,
           actions: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -57,31 +63,37 @@ class _MainScreenState extends State<MainScreen> {
 
                 //location search ui
 
-                //Home,booking and profile ui
+                //Home,booking and profile and reward ui
                 _widgetOptions.elementAt(_selectedIndex),
               ],
             ),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-            onTap: _onItemTapped,
-            currentIndex: _selectedIndex,
-            unselectedItemColor: Colors.orange,
-            elevation: 50,
-            items: <BottomNavigationBarItem>[
-              _bottomAppBarItems(
-                Icons.home,
-                'Home',
-              ),
-              _bottomAppBarItems(
-                Icons.shopping_cart,
-                'Bookings',
-              ),
-              _bottomAppBarItems(
-                Icons.account_circle,
-                'Profile',
-              ),
-            ]),
+          onTap: _onItemTapped,
+          currentIndex: _selectedIndex,
+          unselectedItemColor: Colors.orange,
+          selectedItemColor: Colors.blue,
+          elevation: 50,
+          items: <BottomNavigationBarItem>[
+            _bottomAppBarItems(
+              Icons.home,
+              'Home',
+            ),
+            _bottomAppBarItems(
+              Icons.shopping_cart,
+              'Bookings',
+            ),
+            _bottomAppBarItems(
+              Icons.radio,
+              'Reward',
+            ),
+            _bottomAppBarItems(
+              Icons.account_circle,
+              'Profile',
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -91,9 +103,10 @@ class _MainScreenState extends State<MainScreen> {
       //icon: Icon(Icons.business),
       icon: Icon(icon),
       label: labelText,
+
       tooltip: labelText,
 
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.white,
     );
   }
 
@@ -103,14 +116,15 @@ class _MainScreenState extends State<MainScreen> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
         height: 50,
-        width: foldedSearchbar ? 56 : 250,
+        width: foldedSearchbar ? 56 : 270,
         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
         decoration: BoxDecoration(
-            boxShadow: kElevationToShadow[6],
-            color: color,
-            borderRadius: BorderRadius.all(
-              Radius.circular(20),
-            )),
+          boxShadow: kElevationToShadow[6],
+          color: color,
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+        ),
         child: Row(
           children: [
             Expanded(
@@ -118,23 +132,24 @@ class _MainScreenState extends State<MainScreen> {
                   ? TextField(
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
-                          border: InputBorder.none,
-                          icon: Icon(
-                            icon,
-                            color: Colors.blue,
-                          ),
-                          hintStyle: TextStyle(
-                            color: Colors.blue[900],
-                          )),
+                        border: InputBorder.none,
+                        icon: Icon(
+                          icon,
+                          color: Colors.blue,
+                        ),
+                        hintStyle: TextStyle(
+                          color: Colors.blue[900],
+                        ),
+                      ),
                     )
                   : TextField(
                       decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: hintText,
-                          hintStyle: GoogleFonts.getFont(
-                            'Roboto',
-                            fontSize: 15,
-                          )),
+                        border: InputBorder.none,
+                        hintText: hintText,
+                        hintStyle: GoogleFonts.raleway(
+                          fontSize: 15,
+                        ),
+                      ),
                     ),
             ),
             AnimatedContainer(
@@ -142,23 +157,26 @@ class _MainScreenState extends State<MainScreen> {
               child: Material(
                 type: MaterialType.transparency,
                 child: InkWell(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(foldedSearchbar ? 32 : 0),
-                      topRight: Radius.circular(32),
-                      bottomRight: Radius.circular(32),
-                      bottomLeft: Radius.circular(foldedSearchbar ? 32 : 0),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Icon(foldedSearchbar ? Icons.search : Icons.close,
-                          color: Colors.blue[900]),
-                    ),
-                    onTap: () {
-                      setState(() {
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(foldedSearchbar ? 32 : 0),
+                    topRight: Radius.circular(32),
+                    bottomRight: Radius.circular(32),
+                    bottomLeft: Radius.circular(foldedSearchbar ? 32 : 0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Icon(foldedSearchbar ? Icons.search : Icons.close,
+                        size: 25, color: Colors.blue[900]),
+                  ),
+                  onTap: () {
+                    setState(
+                      () {
                         foldedSearchbar = !foldedSearchbar;
                         foldedlocationbar = !foldedSearchbar;
-                      });
-                    }),
+                      },
+                    );
+                  },
+                ),
               ),
             )
           ],
@@ -173,14 +191,15 @@ class _MainScreenState extends State<MainScreen> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
         height: 50,
-        width: foldedlocationbar ? 56 : 240,
+        width: foldedlocationbar ? 56 : 270,
         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
         decoration: BoxDecoration(
-            boxShadow: kElevationToShadow[6],
-            color: color,
-            borderRadius: BorderRadius.all(
-              Radius.circular(20),
-            )),
+          boxShadow: kElevationToShadow[6],
+          color: color,
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+        ),
         child: Row(
           children: [
             Expanded(
@@ -201,8 +220,7 @@ class _MainScreenState extends State<MainScreen> {
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: hintText,
-                            hintStyle: GoogleFonts.getFont(
-                              'Roboto',
+                            hintStyle: GoogleFonts.raleway(
                               fontSize: 15,
                             )),
                       )),
@@ -223,6 +241,7 @@ class _MainScreenState extends State<MainScreen> {
                           foldedlocationbar
                               ? Icons.location_history
                               : Icons.close,
+                          size: 25,
                           color: Colors.blue[900]),
                     ),
                     onTap: () {

@@ -10,6 +10,7 @@ import 'package:urban_club/util/sharePreference_instance.dart';
 import 'Controller/application_starter_controller.dart';
 import 'StreamBuilderLearning2.dart';
 import 'View/Screens/MainScreen.dart';
+import 'View/Screens/demo.dart';
 import 'View/SigninSignUp/LoginView.dart';
 import 'View/SigninSignUp/errorrpage.dart';
 import 'streamBuilderLearning.dart';
@@ -36,21 +37,22 @@ class StartApp extends StatelessWidget {
       theme: ThemeData(accentColor: Colors.black),
       debugShowCheckedModeBanner: false,
       // initialBinding: DashboardBinding(),
-      initialRoute: '/',
-      getPages: [
-        GetPage(
-            name: '/home',
-            page: () => MainScreen(),
-            transition: Transition.fadeIn),
-        GetPage(
-            name: '/signup',
-            page: () => Loginview(),
-            transition: Transition.leftToRight),
-      ],
-      unknownRoute: GetPage(name: '/errorpage', page: () => ErrorPage()),
-      // home: MyApp(),
+      // initialRoute: '/',
+      // getPages: [
+      //   GetPage(
+      //       name: '/home',
+      //       page: () => MainScreen(),
+      //       transition: Transition.fadeIn),
+      //   GetPage(
+      //       name: '/signup',
+      //       page: () => Loginview(),
+      //       transition: Transition.leftToRight),
+      // ],
+      // unknownRoute: GetPage(name: '/errorpage', page: () => ErrorPage()),
+      // home: MyApp( ),
       //home: Loginview(),
       home: Loginview(),
+      //home: DemoScreen(),
     );
   }
 }

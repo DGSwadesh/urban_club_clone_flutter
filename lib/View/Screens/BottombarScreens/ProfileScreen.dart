@@ -9,7 +9,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 800,
+      color: Colors.blueAccent,
+      height: 600,
       width: double.infinity,
       child: Column(
         children: [
@@ -21,9 +22,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: BoxDecoration(
                   boxShadow: kElevationToShadow[2],
                   image: DecorationImage(
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                       image: NetworkImage(
-                        'https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                        'https://www.spiralytics.com/wp-content/uploads/2020/08/ecommerce-optimization.png',
                       )),
                 ),
               ),
@@ -36,6 +37,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               )
             ],
+          ),
+          Card(
+            color: Colors.blueAccent,
+            margin: EdgeInsets.all(3),
           ),
           tileElement('Register as partner'),
           tileElement('About urban clone Company'),
@@ -51,6 +56,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget tileElement(title) {
-    return ListTile(leading: Icon(Icons.access_alarm), title: Text('$title'));
+    return ListTile(
+      leading: Icon(Icons.access_alarm),
+      title: Text('$title'),
+      tileColor: Colors.white,
+    );
   }
 }

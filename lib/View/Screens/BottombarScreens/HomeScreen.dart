@@ -12,8 +12,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomePageState extends State<HomeScreen> {
   List<String> images = [
-    'https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    'https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+    'https://acquire.io/wp-content/uploads/2017/12/7-Ecommerce-Technology-Trends-that-Empower-Businesses-Updated.png',
+    'https://www.spiralytics.com/wp-content/uploads/2020/08/ecommerce-optimization.png'
   ];
   //ScrollController controller = ScrollController();
 
@@ -55,20 +55,20 @@ class _HomePageState extends State<HomeScreen> {
                 crossAxisCount: 4,
                 children: [
                   InkWell(
-                    child: menuItems(),
+                    child: menuItems(services: 'Ac Service \n& Repair'),
                     onTap: () => Get.to(AcService()),
                   ),
-                  menuItems(),
-                  menuItems(),
-                  menuItems(),
-                  menuItems(),
-                  menuItems(),
-                  menuItems(),
-                  menuItems(),
-                  menuItems(),
-                  menuItems(),
-                  menuItems(),
-                  menuItems(),
+                  menuItems(services: 'Painters'),
+                  menuItems(services: 'Appliance\n Repair'),
+                  menuItems(services: 'DisInfection'),
+                  menuItems(services: 'Cleaning & DisInfection'),
+                  menuItems(services: 'Salon for Women'),
+                  menuItems(services: 'Massage for Women'),
+                  menuItems(services: 'Salon for Men'),
+                  menuItems(services: 'Plumbers'),
+                  menuItems(services: 'Carpenters'),
+                  menuItems(services: 'Pest Control'),
+                  menuItems(services: 'Electrician'),
                 ],
               ),
             ),
@@ -78,10 +78,8 @@ class _HomePageState extends State<HomeScreen> {
             child: Align(
               alignment: Alignment.topLeft,
               child: Text('Best Offer',
-                  style: GoogleFonts.getFont(
-                    'Roboto',
-                    fontSize: 21,
-                  )
+                  style: GoogleFonts.raleway(
+                      fontSize: 21, fontWeight: FontWeight.bold)
                   // TextStyle(fontSize: 21, ),
                   ),
             ),
@@ -91,8 +89,7 @@ class _HomePageState extends State<HomeScreen> {
             child: Align(
               alignment: Alignment.topLeft,
               child: Text('Hygin & Single use products | low contact services',
-                  style: GoogleFonts.getFont(
-                    'Roboto',
+                  style: GoogleFonts.raleway(
                     fontSize: 15,
                   )
                   // TextStyle(fontSize: 21, ),
@@ -100,12 +97,12 @@ class _HomePageState extends State<HomeScreen> {
             ),
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            BestOffer(imageNumber: 0, imagebelowText: 'Flower'),
-            BestOffer(imageNumber: 0, imagebelowText: 'Flower')
+            BestOffer(imageNumber: 0, imagebelowText: 'E-Commerce'),
+            BestOffer(imageNumber: 0, imagebelowText: 'E-Commerce')
           ]),
           Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            BestOffer(imageNumber: 0, imagebelowText: 'Flower'),
-            BestOffer(imageNumber: 0, imagebelowText: 'Flower')
+            BestOffer(imageNumber: 0, imagebelowText: 'E-Commerce'),
+            BestOffer(imageNumber: 0, imagebelowText: 'E-Commerce')
           ]),
         ],
       ),
@@ -135,20 +132,37 @@ class _HomePageState extends State<HomeScreen> {
             //   fit: BoxFit.cover,
             // ),
           ),
-          Text('$imagebelowText')
+          Text(
+            '$imagebelowText',
+            style: GoogleFonts.raleway(fontSize: 15),
+          )
         ],
       )),
     );
   }
 
-  Widget menuItems([index]) {
+  Widget menuItems({services}) {
     return Card(
         elevation: 2,
         color: Colors.white,
         shadowColor: Colors.purpleAccent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Icon(Icons.ac_unit), Text('Service')],
+          children: [
+            Image.network(
+              "https://img.icons8.com/office/40/000000/sale.png",
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              '$services',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                fontSize: 10,
+              ),
+            )
+          ],
         ));
   }
 
