@@ -53,11 +53,14 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ],
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+        body: Padding(
+          padding: EdgeInsets.only(top: 8.0),
+          child: SizedBox(
+            height: 1000,
+            child: ListView(
+              //mainAxisAlignment: MainAxisAlignment.start,
+              physics: const BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
               children: [
                 //service search ui
 
