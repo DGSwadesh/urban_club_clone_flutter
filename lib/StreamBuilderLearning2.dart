@@ -26,6 +26,7 @@ class _StreamBuilderLearningtwoState extends State<StreamBuilderLearningtwo> {
         ));
   }
 
+  // ignore: non_constant_identifier_names
   Stream<int?> Counter() async* {
     while (count <= 100) {
       await Future.delayed(Duration(seconds: 1));

@@ -252,7 +252,7 @@ class _AcServiceState extends State<AcService> {
   Widget container1() {
     return Container(
       color: Colors.blue,
-      height: 500,
+      height: 350,
       width: double.infinity,
       child: StoryView(
           repeat: true,

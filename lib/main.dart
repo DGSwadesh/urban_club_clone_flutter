@@ -7,13 +7,13 @@ import 'package:get/get.dart';
 //import 'package:provider/provider.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:urban_club/util/sharePreference_instance.dart';
-import 'Controller/application_starter_controller.dart';
-import 'StreamBuilderLearning2.dart';
-import 'View/Screens/MainScreen.dart';
-import 'View/Screens/demo.dart';
+//import 'Controller/application_starter_controller.dart';
+//import 'StreamBuilderLearning2.dart';
+//import 'View/Screens/MainScreen.dart';
+//import 'View/Screens/demo.dart';
 import 'View/SigninSignUp/LoginView.dart';
-import 'View/SigninSignUp/errorrpage.dart';
-import 'streamBuilderLearning.dart';
+//import 'View/SigninSignUp/errorrpage.dart';
+//import 'streamBuilderLearning.dart';
 //import 'View/DashBoard/Dashboard.dart';
 //import 'View/SigninSignUp/welcomeScreen.dart';
 
@@ -25,12 +25,12 @@ void main() {
       .then((_) async {
     sharePrefereceInstance.init();
     runApp(
-      StartApp(),
+      MyApp(),
     );
   });
 }
 
-class StartApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

@@ -10,8 +10,8 @@ class RewardScreen extends StatefulWidget {
 class _RewardScreenState extends State<RewardScreen> {
   @override
   Widget build(BuildContext context) {
-    double screen_height = MediaQuery.of(context).size.height;
-    double screen_width = MediaQuery.of(context).size.width;
+    //double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
       height: 1000,
       child: ListView(
@@ -72,7 +72,7 @@ class _RewardScreenState extends State<RewardScreen> {
           ),
           Container(
             height: 350,
-            width: screen_width,
+            width: screenWidth,
             color: Colors.amber[50],
             child: Padding(
               padding: const EdgeInsets.all(8.0),

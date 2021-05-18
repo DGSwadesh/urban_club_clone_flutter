@@ -1,5 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="com.example.urban_club">
    <application
         android:label="urban_club"
@@ -32,8 +31,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-
+            </intent-filter> 
             	<!--<intent-filter>
 		              <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
 	            </intent-filter>
@@ -46,5 +44,6 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+          
     </application>
 </manifest>

@@ -43,6 +43,9 @@ dependencies:
   story_view: ^0.13.0-nullsafety.1
   scroll_to_index: ^2.0.0
   social_share: ^2.1.1
+  onesignal_flutter: ^3.0.0-beta3
+  firebase_messaging: ^9.1.4
+  firebase_core: ^1.1.1
 
 dev_dependencies:
   flutter_test:

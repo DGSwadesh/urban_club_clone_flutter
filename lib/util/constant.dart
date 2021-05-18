@@ -30,7 +30,7 @@ showToast(msg, color) => Fluttertoast.showToast(
       textColor: Colors.white,
       fontSize: 16.0,
     );
-    
+
 final Color red = Color(0xffff1a1a);
 final Color white = Color(0xffffffff);
 final Color lightWhite = Color(0xfffcf2f2);
@@ -55,11 +55,13 @@ final Color darkRedColor = Color(0xFF6B7278);
 final Color bottomNavBarIconColor = Color.fromARGB(1, 67, 148, 223);
 
 //=================================BASE URL====================================
+// ignore: non_constant_identifier_names
 final String BASE_URL = "https://laravel.gowebbidemo.com/122303/public/api/v1/";
 // final String BASE_URL = "https://bhojpurisangam.in/api/";
 //========================================sharedpreference======================
 
 //---------------Parent Apis-----------------//
+// ignore: non_constant_identifier_names
 final String whats_new = 'whats-new'; //get
 final String categories = 'categories'; //get
 final String albums = 'albums'; //get
@@ -71,9 +73,12 @@ final String searchSongs = 'search-songs-album-artist'; //get
 //========================================sharedpreference======================
 //==========================Text============================================
 
+// ignore: non_constant_identifier_names
 final String INTERNET_ERROR = "We are faceing an error";
 
+// ignore: non_constant_identifier_names
 final String SUCCESS = "success";
+// ignore: non_constant_identifier_names
 final String FAILED = "failed";
 //========================assets======================
 
@@ -87,6 +92,5 @@ final String audioStoryImg = 'assets/audio.png';
 final String categoryImg = 'assets/category.png';
 final String playListSongImg = 'assets/playListSong.png';
 final String nowPlayingImg = 'assets/now_playing.png';
-
 
 final String imageList = 'assets/image';

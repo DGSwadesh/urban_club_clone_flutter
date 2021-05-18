@@ -2,6 +2,7 @@ import 'dart:ui';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:urban_club/View/Screens/MainScreen.dart';
 import 'package:urban_club/util/sharePreference_instance.dart';
 
@@ -11,6 +12,16 @@ class Loginview extends StatefulWidget {
 }
 
 class _LoginviewState extends State<Loginview> {
+  initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  String appId = "d76c0e4a-8182-4426-8770-0c9c7875775d";
+  Future<void> initPlatformState() async {
+    await OneSignal.shared.setAppId(appId);
+  }
+
   SharePreferenceInstance preferenceInstance = SharePreferenceInstance();
   _buildTextField(IconData icon, String hintText) {
     return Container(

@@ -1,24 +1,22 @@
 class HeaderModel {
   String? authorization;
-  String Accept="application/json";
+  // ignore: non_constant_identifier_names
+  String Accept = "application/json";
   String? contentType;
 
-HeaderModel([this.authorization,this.contentType]);
-
-
+  HeaderModel([this.authorization, this.contentType]);
 
   Map<String, String> toMap() {
     return {
       'Authorization': authorization!,
       'Content-Type': contentType!,
-      'Accept':Accept
+      'Accept': Accept
     };
   }
 }
 
-
-
 class HeaderModelJSON {
+  // ignore: non_constant_identifier_names
   String? device_type;
   String? authorization;
   String? contentType;

@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+//import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:urban_club/View/Screens/VariousServices/AcService.dart';
+import 'package:urban_club/View/admin/adminScreen.dart';
+//import 'package:firebase_messaging/firebase_messaging.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,11 +15,32 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomeScreen> {
+  //final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
+  // String messageTitle = "Empty";
+  // String notificationAlert = "alert";
+
+  // FirebaseMessaging messaging = FirebaseMessaging.instance;
+  // late String token;
+  // Future<void> getToken() async {
+  //   token = (await messaging.getToken(
+  //     vapidKey:
+  //         "BDr-kXMI15f6zbHT7emIvCltjEPWBtcbqjT1U3UP-_ucJrQJgslfyTE2k7QQVDdULGcBj-Hjf4DCAp1Vd7D0Cgwv",
+  //   ))!;
+  // }
+
   List<String> images = [
     'https://acquire.io/wp-content/uploads/2017/12/7-Ecommerce-Technology-Trends-that-Empower-Businesses-Updated.png',
     'https://www.spiralytics.com/wp-content/uploads/2020/08/ecommerce-optimization.png'
   ];
   //ScrollController controller = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    //getToken();
+    //initOnesignal();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,11 +129,15 @@ class _HomePageState extends State<HomeScreen> {
             BestOffer(imageNumber: 0, imagebelowText: 'E-Commerce'),
             BestOffer(imageNumber: 0, imagebelowText: 'E-Commerce')
           ]),
+          TextButton(
+              onPressed: () => Get.to(AdminScreen()),
+              child: Text('Admin Panel'))
         ],
       ),
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget BestOffer({int? imageNumber, String? imagebelowText}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -166,6 +195,7 @@ class _HomePageState extends State<HomeScreen> {
         ));
   }
 
+  // ignore: non_constant_identifier_names
   Widget CarasolItem({imageNumber}) {
     return Container(
       height: 20,
@@ -178,4 +208,13 @@ class _HomePageState extends State<HomeScreen> {
       ),
     );
   }
+
+//   Future<void> initOnesignal() async {
+// //Remove this method to stop OneSignal Debugging
+//     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+
+//     OneSignal.shared.init("d76c0e4a-8182-4426-8770-0c9c7875775d");
+//     OneSignal.shared
+//         .setInFocusDisplayType(OSNotificationDisplayType.notification);
+//   }
 }
