@@ -1,4 +1,4 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
+//mport 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,33 +8,6 @@ class AdminScreen extends StatefulWidget {
 }
 
 class _AdminScreenState extends State<AdminScreen> {
-  FirebaseMessaging _messaging;
-  @override
-  void initState() {
-    super.initState();
-    _messaging = FirebaseMessaging.instance;
-  }
-  void registerNotification() async {
- 
-  // ...
-
-  // For handling the received notifications
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification notification = message.notification!;
-      AndroidNotification? android = message.notification?.android!;
-    });
-
-      // Parse the message received
-      RemoteNotification notification = RemoteNotification.fromJson(message);
-
-      setState(() {
-        _notificationInfo = notification;
-        _totalNotifications++;
-      });
-    }
-  
-}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 TextStyle customizeTextStyle(fontWeight, fontSize, fontColor) =>
@@ -21,15 +21,15 @@ TextStyle customizeTextStyleSmallerSpace(fontWeight, fontSize, fontColor) =>
             color: fontColor,
             fontSize: fontSize));
 
-showToast(msg, color) => Fluttertoast.showToast(
-      msg: msg,
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      backgroundColor: color,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
+// showToast(msg, color) => Fluttertoast.showToast(
+//       msg: msg,
+//       toastLength: Toast.LENGTH_LONG,
+//       gravity: ToastGravity.BOTTOM,
+//       timeInSecForIosWeb: 1,
+//       backgroundColor: color,
+//       textColor: Colors.white,
+//       fontSize: 16.0,
+//     );
 
 final Color red = Color(0xffff1a1a);
 final Color white = Color(0xffffffff);

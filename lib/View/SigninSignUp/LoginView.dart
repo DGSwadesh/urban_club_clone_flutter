@@ -2,9 +2,14 @@ import 'dart:ui';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
+//import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:urban_club/View/Screens/MainScreen.dart';
+//import 'package:urban_club/main.dart';
 import 'package:urban_club/util/sharePreference_instance.dart';
+
+//import 'package:firebase_core/firebase_core.dart';
+//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class Loginview extends StatefulWidget {
   @override
@@ -14,12 +19,73 @@ class Loginview extends StatefulWidget {
 class _LoginviewState extends State<Loginview> {
   initState() {
     super.initState();
-    initPlatformState();
+    FirebaseMessaging.onMessage.listen(
+      (RemoteMessage message) {
+        RemoteNotification notification = message.notification!;
+        print(notification.title);
+        //AndroidNotification android = message.notification!.android!;
+        // flutterLocalNotificationsPlugin.show(
+        //   notification.hashCode,
+        //   notification.title,
+        //   notification.body,
+        //   NotificationDetails(
+        //     android: AndroidNotificationDetails(
+        //       channel.id,
+        //       channel.name,
+        //       channel.description,
+        //       playSound: false,
+        //      // icon: '@mipmap/ic_launcher',
+        //     ),
+        //   ),
+        // );
+      },
+    );
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (RemoteMessage message) {
+        print('A new message openApp event was published');
+        RemoteNotification notification = message.notification!;
+        //AndroidNotification android = message.notification!.android!;
+        showDialog(
+          context: context,
+          builder: (_) {
+            return AlertDialog(
+              title: Text(notification.title!),
+              content: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text(notification.body!),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+    //initPlatformState();
   }
 
-  String appId = "d76c0e4a-8182-4426-8770-0c9c7875775d";
-  Future<void> initPlatformState() async {
-    await OneSignal.shared.setAppId(appId);
+  // String appId = "d76c0e4a-8182-4426-8770-0c9c7875775d";
+  // Future<void> initPlatformState() async {
+  //   await OneSignal.shared.setAppId(appId);
+  // }
+  void sendnotification() {
+    setState(
+      () {},
+    );
+    // flutterLocalNotificationsPlugin.show(
+    //   0,
+    //   'local notification Testting',
+    //   'How you are doing',
+    //   NotificationDetails(
+    //     android: AndroidNotificationDetails(
+    //         channel.id, channel.name, channel.description,
+    //         importance: Importance.high,
+    //         color: Colors.blue,
+    //         playSound: true,
+    //         icon: '@mipmap/ic_launcher'),
+    //   ),
+    // );
   }
 
   SharePreferenceInstance preferenceInstance = SharePreferenceInstance();
@@ -164,7 +230,12 @@ class _LoginviewState extends State<Loginview> {
                       onPressed: () {
                         Get.off(() => MainScreen());
                       },
-                      child: Text('Skip'))
+                      child: Text('Skip')),
+                  TextButton(
+                      onPressed: () {
+                        sendnotification();
+                      },
+                      child: Text('show notification'))
                 ],
               ),
             ),

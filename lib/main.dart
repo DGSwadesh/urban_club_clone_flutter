@@ -1,8 +1,12 @@
 //import 'dart:async';
 // import 'package:data_connection_checker/data_connection_checker.dart';
+import 'dart:async';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:flutter/services.dart';
+//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 //import 'package:provider/provider.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
@@ -16,14 +20,45 @@ import 'View/SigninSignUp/LoginView.dart';
 //import 'streamBuilderLearning.dart';
 //import 'View/DashBoard/Dashboard.dart';
 //import 'View/SigninSignUp/welcomeScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+// const AndroidNotificationChannel channel = AndroidNotificationChannel(
+//     'Testing channel',
+//     'Testing notification',
+//     'This channel is used for important notification',
+//     importance: Importance.low,
+//     playSound: true);
+//to initialize flutter local notification plugin
+// final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+//     FlutterLocalNotificationsPlugin();
+//to initialize firebasemessage plugin
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('The firebase background message initialized: ${message.messageId}');
+}
+Future<void> _firebasemessagingHandler()async {
+  
+}
+
+
+Future<void> main() async {
+  //this is to initialize all the plugin
   WidgetsFlutterBinding.ensureInitialized();
-  // DashboardBinding().dependencies();
+  
   SystemChrome.setPreferredOrientations(
           [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
       .then((_) async {
     sharePrefereceInstance.init();
+    await Firebase.initializeApp();
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+    // await flutterLocalNotificationsPlugin
+    //     .resolvePlatformSpecificImplementation<
+    //         AndroidFlutterLocalNotificationsPlugin>()
+    //     ?.createNotificationChannel(channel);
+    // await FirebaseMessaging.instance
+    //     .setForegroundNotificationPresentationOptions(
+    //         alert: true, badge: true, sound: true);
     runApp(
       MyApp(),
     );
